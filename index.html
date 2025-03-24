@@ -30,29 +30,21 @@
     </div>
 
     <!-- Popup History -->
-    <div class="popup-container" id="historyPopup">
-        <p>💖 Our love journey began in 2021. From a simple meeting, it blossomed into an extraordinary love story.
-            Thank you for being a part of our journey! 💖</p>
-        <button class="close-button" onclick="closePopup()">Close</button>
+    <div class="popup-overlay" id="historyPopup">
+        <div class="popup-container">
+            <p>💖 Our love journey began in 2022. From a simple meeting.💖</p>
+            <button class="close-button" onclick="closePopup()">Close</button>
+        </div>
     </div>
-
+    
     <script>
-        function toggleMenu() {
-            document.querySelector(".menu-container").classList.toggle("open");
-        }
-
         function openPopup() {
-            const popup = document.getElementById("historyPopup");
-            popup.classList.add("show");
-            popup.classList.remove("hide");
+            document.getElementById("historyPopup").classList.add("show");
         }
-
+        
         function closePopup() {
             const popup = document.getElementById("historyPopup");
-            popup.classList.add("hide");
-            setTimeout(() => {
-                popup.classList.remove("show");
-            }, 1000);
+            popup.classList.remove("show");
         }
     </script>
 
