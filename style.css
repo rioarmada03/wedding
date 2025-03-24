@@ -95,52 +95,86 @@
 }
 
 /* Styling Popup History */
-.popup-container {
+.popup-overlay {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0.8);
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    width: 80%;
-    max-width: 350px;
-    text-align: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 
-.popup-container p {
+.popup-container {
+    background: white;
+    padding: 15px;
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    transform: scale(0.5) translateY(-50px);
+    opacity: 0;
+    transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+    animation: bounceIn 0.8s ease-out;
     color: pink;
-    font-size: 16px;
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: scale(0.3) translateY(-100px) rotate(-10deg);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.1) translateY(20px) rotate(5deg);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1) translateY(0) rotate(0);
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        transform: scale(1) translateY(0) rotate(0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0.5) translateY(-50px) rotate(-10deg);
+        opacity: 0;
+    }
+}
+
+.popup-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.popup-overlay.show .popup-container {
+    transform: scale(1) translateY(0) rotate(0);
+    opacity: 1;
+}
+
+.popup-overlay.hide .popup-container {
+    animation: fadeOut 0.6s ease-out;
 }
 
 .close-button {
+    margin-top: 10px;
+    padding: 6px 12px;
     background: pink;
-    border: none;
     color: white;
-    font-size: 16px;
-    padding: 5px 10px;
+    border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 10px;
+    transition: background 0.3s, transform 0.2s;
 }
 
 .close-button:hover {
     background: palevioletred;
-}
-
-/* Efek muncul & menghilang lebih halus */
-.popup-container.show {
-    opacity: 1;
-    visibility: visible;
-    transform: translate(-50%, -50%) scale(1);
-}
-
-.popup-container.hide {
-    opacity: 0;
-    visibility: hidden;
-    transform: translate(-50%, -50%) scale(0.8);
+    transform: scale(1.1);
 }
