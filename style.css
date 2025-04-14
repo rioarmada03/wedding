@@ -180,7 +180,7 @@
 }
 
 @import "compass/css3";
-
+/* CONTAINER */
 header {
     position: relative;
     width: 100%;
@@ -218,8 +218,8 @@ header {
     background: url('https://s.cdpn.io/7635/averyson-logo.gif') no-repeat center center;
     background-size: contain;
     width: 100%;
-    height: auto;
     max-width: 400px;
+    aspect-ratio: 4 / 3;
     position: relative;
     font-family: Baskerville, serif;
     color: palevioletred;
@@ -227,25 +227,26 @@ header {
 
 /* TEKS DALAM LOGO */
 .laura, .javery, .ampersand {
-    font-size: 45em;
-    text-align: center;
+    font-size: 3vw; /* Ukuran proporsional */
     position: absolute;
+    text-align: center;
+    white-space: nowrap;
 }
 
 .laura {
-    top: 30%;
+    top: 25%;
     left: 35%;
     transform: translate(-50%, -50%);
 }
 
 .javery {
-    top: 70%;
+    top: 65%;
     left: 70%;
     transform: translate(-50%, -50%);
 }
 
 .ampersand {
-    top: 50%;
+    top: 45%;
     left: 52%;
     font-style: italic;
     transform: translate(-50%, -50%);
@@ -253,11 +254,16 @@ header {
 
 .btn {
     position: absolute;
-    top: 0;
-    left: 52%;
+    top: -25px;
+    left: 50%;
     transform: translateX(-50%);
-    font-size: 0.9em;
+    font-size: 1.2vw;
     color: palevioletred;
+}
+
+.btn:hover{
+    font-weight: bolder;
+    color: pink;
 }
 
 /* VIDEO */
@@ -270,20 +276,23 @@ video {
 .cover.fade-out {
     opacity: 0;
     pointer-events: none;
+    transition: opacity 0.7s ease;
 }
 
 /* RESPONSIVE UNTUK MOBILE */
 @media (max-width: 480px) {
     .laura, .javery, .ampersand {
-        font-size: 5em;
+        font-size: 4em;
     }
 
     .btn {
-        font-size: 0.8em;
+        font-size: 1em;
     }
 
     .cover .logo {
         height: 300px;
+        max-width: 90%;
     }
 }
+
 
